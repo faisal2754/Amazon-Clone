@@ -1,10 +1,10 @@
 import { useStateValue } from '../state/StateProvider'
 import '../styles/Checkout.css'
-import Subtotal from './Subtotal'
 import CheckoutProduct from './CheckoutProduct'
+import Subtotal from './Subtotal'
 
 const Checkout = () => {
-   const [{ basket, user }, dispatch] = useStateValue()
+   const [{ basket, user }] = useStateValue()
 
    return (
       <div className="checkout">

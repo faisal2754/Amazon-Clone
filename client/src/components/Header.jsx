@@ -1,12 +1,12 @@
 import SearchIcon from '@material-ui/icons/Search'
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket'
 import { Link } from 'react-router-dom'
+import { auth } from '../firebase'
 import { useStateValue } from '../state/StateProvider'
 import '../styles/Header.css'
-import { auth } from '../firebase'
 
 const Header = () => {
-   const [{ basket, user }, dispatch] = useStateValue()
+   const [{ basket, user }] = useStateValue()
 
    const handleAuth = () => {
       if (user) {
