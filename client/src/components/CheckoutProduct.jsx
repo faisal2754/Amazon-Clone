@@ -2,7 +2,8 @@ import { useStateValue } from '../state/StateProvider'
 import '../styles/CheckoutProduct.css'
 
 const CheckoutProduct = ({ id, image, title, price, rating }) => {
-   const [dispatch] = useStateValue()
+   // eslint-disable-next-line
+   const [_, dispatch] = useStateValue()
 
    const removeFromBasket = () => {
       dispatch({

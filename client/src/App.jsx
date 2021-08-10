@@ -9,12 +9,11 @@ import { auth } from './firebase'
 import { useStateValue } from './state/StateProvider'
 
 const App = () => {
-   const [dispatch] = useStateValue()
+   // eslint-disable-next-line
+   const [_, dispatch] = useStateValue()
 
    useEffect(() => {
       auth.onAuthStateChanged((authUser) => {
-         console.log('User is: ', authUser)
-
          if (authUser) {
             dispatch({
                type: 'SET_USER',
