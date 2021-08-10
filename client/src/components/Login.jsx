@@ -1,14 +1,23 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import '../styles/Login.css'
 import { auth } from '../firebase'
 
 const Login = () => {
+   const history = useHistory()
    const [email, setEmail] = useState('')
    const [password, setPassword] = useState('')
 
-   const signIn = (e) => {
+   const signIn = async (e) => {
       e.preventDefault()
+      try {
+         const authObj = await auth.signInWithEmailAndPassword(email, password)
+         if (authObj) {
+            history.push('/')
+         }
+      } catch (err) {
+         alert(err.message)
+      }
    }
 
    const register = async (e) => {
@@ -18,7 +27,9 @@ const Login = () => {
             email,
             password
          )
-         console.log(authObj)
+         if (authObj) {
+            history.push('/')
+         }
       } catch (err) {
          alert(err.message)
       }
